@@ -30,7 +30,7 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
   <br><br><br>
 
   **Charts & Live Visual Stats**
-
+  ***A new 82-year-old Goalkeeper is added every 2 seconds.***
 <p align="center">
   <img src="https://github.com/user-attachments/assets/bef9dd9d-b9de-4845-bfc8-75d70af51d90" width="680"/>
   <br/>
@@ -38,8 +38,6 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
   <br/>
   <img src="https://github.com/user-attachments/assets/b2323f98-69e8-4ac6-a732-56f5f3d68f27" width="640"/>
 </p>
-
-**A new 82-year-old Goalkeeper is added every 2 seconds.**
 
 </div>
 
