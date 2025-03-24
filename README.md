@@ -1,6 +1,6 @@
 # ⚽ Football Players App
 
-This will be a full-stack React Native + Next.js + SQLite application for managing football player data. Currently, there is only the frontend in React, which supports complete CRUD operations, statistics tracking and visual data insights.
+This will be a full-stack React Native + Next.js + SQLite application for managing football player data. Currently, there is only the frontend in React + Next.js, which supports complete CRUD operations, statistics tracking and visual data insights.
 
 ## 🛠 Features
 
@@ -9,6 +9,7 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 <div>
 
 - Create, Read, Update, Delete players  
+  - Each new player starts with default images, a 5.0 rating, and 0 goals  
 - Search and filter by player name  
 - Rating-based badge colors:  
   - 🔵 Blue: 9.0+  
@@ -19,7 +20,7 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 - Charts:  
   - Player count per position  
   - Rating category distribution  
-  - Age range distribution   
+  - Age range distribution  
 
 </div>
 
