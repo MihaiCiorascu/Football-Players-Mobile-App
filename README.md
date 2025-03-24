@@ -73,8 +73,3 @@ npm run dev
 ```
 
 Visit http://localhost:3000 in your browser.
-
-## 📝 Notes
-Built for university assignment submission.
-
-.gitignore is configured to exclude node_modules, .next, logs, and other unnecessary files.
