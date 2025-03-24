@@ -29,13 +29,18 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 
   <br><br><br>
 
-  **Charts & Live Visual Stats:**
+  **Charts & Live Visual Stats**
 
+<p align="center">
   <img src="https://github.com/user-attachments/assets/bef9dd9d-b9de-4845-bfc8-75d70af51d90" width="680"/>
+  <br/>
   <img src="https://github.com/user-attachments/assets/1a64413b-6db8-4de9-bbff-87e2551c9421" width="620"/>
+  <br/>
   <img src="https://github.com/user-attachments/assets/b2323f98-69e8-4ac6-a732-56f5f3d68f27" width="640"/>
+</p>
 
-  <p>A new 82-year-old Goalkeeper is added every 2 seconds.</p>
+**A new 82-year-old Goalkeeper is added every 2 seconds.**
+
 </div>
 
 
