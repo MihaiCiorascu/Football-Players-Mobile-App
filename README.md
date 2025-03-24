@@ -1,6 +1,6 @@
 # ⚽ Football Players App
 
-This is a full-stack React + Next.js application for managing football player data. It supports complete CRUD operations, statistics tracking, and visual data insights.
+This will be a full-stack React Native + Next.js + SQLite application for managing football player data. Currently, there is only the frontend in React, which supports complete CRUD operations, statistics tracking and visual data insights.
 
 ## 🛠 Features
 
