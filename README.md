@@ -31,9 +31,9 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 
   **Charts & Visual Stats:**
 
-  <img src="https://github.com/user-attachments/assets/e9ac9346-996b-4746-9d50-18af3e505f91" width="300"/>
-  <img src="https://github.com/user-attachments/assets/d1666104-b87a-4f8d-a5e2-879a469eccde" width="300"/>
-  <img src="https://github.com/user-attachments/assets/be79546e-f2c7-4257-9d97-9ed5eff357de" width="300"/>
+  <img src="https://github.com/user-attachments/assets/5bec8d81-5ca1-4924-b899-357cf15a2af0" width="300"/>
+  <img src="https://github.com/user-attachments/assets/6eed5112-6cfc-4773-80bb-ab734829a443" width="300"/>
+  <img src="https://github.com/user-attachments/assets/daf93958-12b9-4e62-a4b6-46bf61c2be73" width="300"/>
 </div>
 
 
