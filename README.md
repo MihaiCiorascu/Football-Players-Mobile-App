@@ -9,7 +9,7 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 <div>
 
 - Create, Read, Update, Delete players  
-  - Each new player starts with default images, a 5.0 rating, and 0 goals  
+  - Each new player starts with default images, a 5.0 rating and 0 goals  
 - Search and filter by player name  
 - Rating-based badge colors:  
   - 🔵 Blue: 9.0+  
