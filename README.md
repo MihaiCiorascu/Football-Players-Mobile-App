@@ -23,15 +23,17 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 
 </div>
 
-  **The full players list:**
+<br><br>
+
+  **The full players list**
 
   <img src="https://github.com/user-attachments/assets/68ee7d02-8c6b-44ff-860c-1599aeb5fce1" width="300"/>
 
-  <br><br><br>
+  <br><br>
 
   **Charts & Live Visual Stats**
   <br>
-  ***A new 82-year-old Goalkeeper is added every 2 seconds.***
+  *A new 82-year-old Goalkeeper is added every 2 seconds.*
 <p align="center">
   <img src="https://github.com/user-attachments/assets/bef9dd9d-b9de-4845-bfc8-75d70af51d90" width="680"/>
   <br/>
