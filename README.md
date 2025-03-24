@@ -51,7 +51,7 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 - **Frontend**: React, Next.js
 - **State Management**: Context API
 - **Styling**: CSS Modules
-- **Charts**: Recharts (or Chart.js)
+- **Charts**: Chart.js
 - **Routing**: next/navigation
 
 ## 📁 Structure Overview
