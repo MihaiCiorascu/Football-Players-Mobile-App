@@ -23,9 +23,17 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 - Pagination on the full player list  
 
 </div>
+  **The full players list:**
 
-<img src="https://github.com/user-attachments/assets/68ee7d02-8c6b-44ff-860c-1599aeb5fce1" width="300"/>
+  <img src="https://github.com/user-attachments/assets/68ee7d02-8c6b-44ff-860c-1599aeb5fce1" width="300"/>
 
+  <br>
+
+  **Charts & Visual Stats:**
+
+  <img src="https://github.com/user-attachments/assets/e9ac9346-996b-4746-9d50-18af3e505f91" width="300"/>
+  <img src="https://github.com/user-attachments/assets/d1666104-b87a-4f8d-a5e2-879a469eccde" width="300"/>
+  <img src="https://github.com/user-attachments/assets/be79546e-f2c7-4257-9d97-9ed5eff357de" width="300"/>
 </div>
 
 
