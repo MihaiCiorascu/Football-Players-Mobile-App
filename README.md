@@ -35,7 +35,7 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
   <img src="https://github.com/user-attachments/assets/1a64413b-6db8-4de9-bbff-87e2551c9421" width="310"/>
   <img src="https://github.com/user-attachments/assets/b2323f98-69e8-4ac6-a732-56f5f3d68f27" width="320"/>
 
-  <p>A new 82 years old Goalkeeper is added every 2 seconds.</p>
+  <p>A new 82-year-old Goalkeeper is added every 2 seconds.</p>
 </div>
 
 
