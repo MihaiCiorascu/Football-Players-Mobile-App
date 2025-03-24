@@ -1,0 +1,118 @@
+.createPlayerContainer {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  align-items: center;
+  margin-top: 20px;
+  padding: 20px;
+  display: flex;
+}
+
+@media (width<=640px) {
+  .createPlayerContainer {
+    padding: 15px;
+  }
+}
+
+.formContent {
+  flex-grow: 1;
+}
+
+@media (width<=640px) {
+  .formContent {
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+  }
+}
+
+.defaultAvatar {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 15px;
+}
+
+.formInput {
+  color: #414141;
+  background-color: #fff;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: Mulish, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.positionSelect {
+  color: #666;
+  background-color: #fff;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: Mulish, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  cursor: pointer;
+}
+
+.positionSelect:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(107, 70, 193, 0.2);
+}
+
+.formField {
+  color: #666;
+  background-color: #fff;
+  border: none;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-family: Mulish, sans-serif;
+}
+
+.addButton {
+  background: linear-gradient(to top right, #6b1ec5, #9b44dd);
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 20px;
+  display: flex;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.addButton:hover {
+  background: linear-gradient(to top right, #6b1ec5, #9b44dd);
+  transform: scale(1.05);
+}
+
+.addButton:focus {
+  outline: 2px solid #8b6fd6;
+  background: linear-gradient(to top right, #6b1ec5, #9b44dd);
+}
+
+.addIcon {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) saturate(100%) invert(89%) sepia(23%) saturate(757%) hue-rotate(355deg) brightness(105%) contrast(102%);
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}

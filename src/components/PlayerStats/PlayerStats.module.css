@@ -1,0 +1,238 @@
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  font-family: Mulish, sans-serif;
+}
+
+.boxContainer {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 480px;
+  overflow: hidden;
+  padding: 12px;
+}
+
+.frame {
+  background: linear-gradient(to top right, #6b1ec5, #9b44dd);
+  border-radius: 54px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 328px;
+  overflow: hidden;
+  box-shadow: 19px 11px 59px #00000017;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  padding: 0 36px;
+}
+
+.headerContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+}
+
+.headerImage {
+  width: 83%;
+  aspect-ratio: 1.49;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 12px;
+  margin-right: 50px;
+  margin-top: 50px;
+}
+
+.editButton {
+  position: absolute;
+  top: 2px;
+  right: 12px;
+  background-color: #4b1c86;
+  border: none;
+  border-radius: 12px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.editButton:hover {
+  background-color: #6b23b8;
+  transform: scale(1.05);
+}
+
+.editIcon {
+  width: 40px;
+  height: 40px;
+  filter: none;
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+}
+
+.firstName {
+  color: #ffffff;
+  font-family: League Gothic, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  margin-top: 100px;
+  line-height: 1;
+}
+
+.lastName {
+  color: #ffd700;
+  font-family: League Gothic, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 72px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1;
+}
+
+.playerNumber {
+  color: #fcee5d;
+  font-family: Mulish, sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+}
+
+.statsContainer {
+  color: #414141;
+  white-space: nowrap;
+  align-self: stretch;
+  align-items: stretch;
+  gap: 24px;
+  display: flex;
+  margin: 100px 36px 20px;
+  padding: 0 20px;
+  justify-content: center;
+}
+
+.statBox {
+  background-color: #f6f6f6;
+  border-radius: 12px;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  padding: 16px 8px 6px;
+  display: flex;
+  max-width: 120px;
+}
+
+.positionStatBox {
+  text-align: center;
+  background-color: #f6f6f6;
+  border-radius: 12px;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  padding: 16px 6px 6px 10px;
+  display: flex;
+  max-width: 120px;
+}
+
+.statValue {
+  font-family: League Gothic, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+}
+
+.statDivider {
+  border: 1px solid #e1dfdf;
+  flex-shrink: 0;
+  align-self: stretch;
+  height: 1px;
+  margin-top: 7px;
+  width: 100%;
+  padding: 0;
+}
+
+.statLabel {
+  margin-top: 7px;
+  font-family: Mulish, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.goBackButton {
+  background-color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  color: #4b1c86;
+  font-family: Mulish, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  align-self: center;
+  margin-top: auto;
+}
+
+.goBackButton:hover {
+  background-color: #ffd700;
+  transform: scale(1.05);
+}
+
+@media (max-width: 480px) {
+  .frame {
+    padding: 24px;
+  }
+
+  .firstName {
+    font-size: 36px;
+  }
+
+  .lastName {
+    font-size: 54px;
+  }
+
+  .statsContainer {
+    gap: 16px;
+    margin: 40px 24px 16px;
+    padding: 0 12px;
+  }
+
+  .statBox,
+  .positionStatBox {
+    padding: 12px 6px 4px;
+    max-width: 100px;
+  }
+
+  .statValue {
+    font-size: 36px;
+  }
+
+  .statLabel {
+    font-size: 12px;
+  }
+
+  .goBackButton {
+    padding: 12px 24px;
+    font-size: 14px;
+  }
+}

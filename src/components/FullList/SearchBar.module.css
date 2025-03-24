@@ -1,0 +1,36 @@
+.searchContainer {
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    align-items: center;
+    height: 48px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+    display: flex;
+  }
+  
+  .searchIcon {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    opacity: 0.7;
+  }
+  
+  .searchInput {
+    color: #414141;
+    background: none;
+    border: none;
+    width: 100%;
+    font-family: Mulish, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    outline: none;
+  }
+  
+  .noResults {
+    text-align: center;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 0;
+  }
+  

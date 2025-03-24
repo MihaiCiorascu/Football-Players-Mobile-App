@@ -1,0 +1,152 @@
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  font-family: Mulish, sans-serif;
+}
+
+.boxContainer {
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.container {
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.statisticsButton {
+  background: linear-gradient(to top right, #6b1ec5, #9b44dd);
+  border: none;
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  padding: 0;
+}
+
+.statisticsButton:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to top right, #7f36c7, #a55be3);
+}
+
+.statisticsIcon {
+  width: 24px;
+  height: 24px;
+  color: #fcee5d;
+}
+
+.greeting {
+  color: #414141;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.welcomeHeading {
+  color: #414141;
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.sectionHeading {
+  color: #414141;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.performanceContainer {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+@media (width<=991px) {
+  .boxContainer {
+    max-width: 550px;
+  }
+}
+
+@media (width<=640px) {
+  .boxContainer {
+    max-width: 100%;
+  }
+  .container {
+    padding: 15px;
+  }
+  .performanceContainer {
+    padding: 15px;
+  }
+  .statisticsButton {
+    width: 42px;
+    height: 42px;
+  }
+  .statisticsIcon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.statsFooter {
+  text-align: center;
+  color: #414141;
+  border-top: 1px solid #e1dfdf;
+  margin-top: 20px;
+  padding: 15px 0;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.statsFooter::after {
+  position: absolute;
+  opacity: 0;
+  margin-left: 5px;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+}
+
+.statsFooter:hover {
+  color: #6b46c1;
+  background-color: rgba(107, 70, 193, 0.05);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.statsFooter:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.statsFooter:focus {
+  outline: none;
+  color: #6b46c1;
+  background-color: rgba(107, 70, 193, 0.05);
+  font-weight: 600;
+}
+
+.statsFooter:focus::after {
+  opacity: 1;
+  transform: translateX(0);
+}

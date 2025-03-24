@@ -1,0 +1,153 @@
+.pageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  .container {
+    background-color: #fff;
+    border-radius: 54px;
+    width: 414px;
+    height: 896px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 19px 11px 59px #00000017;
+    margin: 0 auto;
+  }
+  @media (width<=991px) {
+    .container {
+      width: 100%;
+      max-width: 414px;
+      height: auto;
+      min-height: 896px;
+    }
+  
+    .pageWrapper {
+      padding: 20px;
+      position: absolute;
+    }
+  }
+  .playerHeader {
+    background-color: #7f36c7;
+    height: 254px;
+    padding: 36px;
+    position: relative;
+  }
+  @media (width<=640px) {
+    .playerHeader {
+      padding: 20px;
+    }
+  }
+  .headerContent {
+    z-index: 2;
+    position: relative;
+  }
+  .playerName {
+    color: #fff;
+    margin-bottom: 15px;
+    font-family: Mulish, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+  }
+  .playerNumber {
+    color: #fcee5d;
+    font-family: Mulish, sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+  }
+  .playerImage {
+    object-fit: contain;
+    width: 184px;
+    height: 231px;
+    position: absolute;
+    top: 23px;
+    left: 222px;
+    right: -40px;
+  }
+  .statsSection {
+    justify-content: space-between;
+    gap: 33px;
+    padding: 36px;
+    display: flex;
+  }
+  @media (width<=640px) {
+    .statsSection {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+  }
+  .statCard {
+    background-color: #f6f6f6;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 92px;
+    height: 122px;
+    padding: 20px 10px;
+  }
+  @media (width<=640px) {
+    .statCard {
+      width: 100%;
+      max-width: 280px;
+    }
+  }
+  .statValue {
+    color: #414141;
+    font-family:
+      League Gothic,
+      sans-serif;
+    font-size: 42px;
+    margin: 0 0 auto 0;
+  }
+  .statDivider {
+    background-color: #e1dfdf;
+    width: 72px;
+    height: 1px;
+    margin: 10px 0;
+  }
+  .statLabel {
+    color: #414141;
+    text-align: center;
+    font-family: Mulish, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+  }
+  .saveButton {
+    color: #7f36c7;
+    cursor: pointer;
+    background-color: #fff;
+    border: none;
+    border-radius: 12px;
+    width: 295px;
+    height: 64px;
+    font-family: Mulish, sans-serif;
+    font-size: 18px;
+    font-weight: 800;
+    position: absolute;
+    bottom: 57px;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: 0 4px 21px #40028845;
+  }
+  @media (width<=640px) {
+    .saveButton {
+      width: 80%;
+      bottom: 30px;
+    }
+  }
+  
+

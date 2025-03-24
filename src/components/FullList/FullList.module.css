@@ -1,0 +1,188 @@
+.pageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #fff;
+    padding: 20px;
+    font-family: Mulish, sans-serif;
+  }
+  
+  .boxContainer {
+    background-color: #f5f5f5;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 480px;
+    overflow: hidden;
+  }
+  
+  .frame {
+    background-color: #fff;
+    border-radius: 54px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .title {
+    color: #ffffff;
+    font-family: League Gothic, -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    margin: 0;
+  }
+  
+  .container {
+    padding: 0;
+  }
+  
+  .greeting {
+    color: #414141;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  
+  .welcomeHeading {
+    color: #414141;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 800;
+  }
+  
+  .sectionHeading {
+    color: #414141;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 32px 0 16px 0;
+  }
+  
+  .performanceContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    padding: 16px;
+  }
+  
+  .goBackButton {
+    background: linear-gradient(to top right, #6b1ec5, #9b44dd);
+    border: none;
+    border-radius: 12px;
+    color: #fcee5d;
+    font-family: Mulish, -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 16px 32px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    align-self: center;
+    margin-top: 16px;
+    margin-left: 140px;
+    width: 100%;
+    max-width: 150px;
+  }
+  
+  .goBackButton:hover {
+    transform: scale(1.05);
+  }
+  
+  @media (width <= 640px) {
+    .frame {
+      padding: 20px;
+    }
+  
+    .title {
+      font-size: 36px;
+    }
+  
+    .welcomeHeading {
+      font-size: 36px;
+    }
+  
+    .sectionHeading {
+      font-size: 24px;
+    }
+  
+    .goBackButton {
+      padding: 12px 24px;
+      font-size: 14px;
+      max-width: 160px;
+    }
+  }
+  
+  .statsFooter {
+    text-align: center;
+    color: #414141;
+    border-top: 1px solid #e1dfdf;
+    margin-top: 20px;
+    padding: 15px 0;
+    font-size: 14px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+  
+  .statsFooter::after {
+    position: absolute;
+    opacity: 0;
+    margin-left: 5px;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+  
+  .statsFooter:hover {
+    color: #6b46c1;
+    background-color: rgba(107, 70, 193, 0.05);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  
+  .statsFooter:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .statsFooter:focus {
+    outline: none;
+    color: #6b46c1;
+    background-color: rgba(107, 70, 193, 0.05);
+    font-weight: 600;
+  }
+  
+  .statsFooter:focus::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .addButton {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    color: #4b1c86;
+    font-family: Mulish, -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .addButton:hover {
+    background-color: #ffd700;
+    transform: scale(1.05);
+  }

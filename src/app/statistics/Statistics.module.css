@@ -1,0 +1,168 @@
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+  padding: 20px;
+  font-family: Mulish, sans-serif;
+}
+
+.boxContainer {
+  background-color: #fff;
+  border-radius: 54px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+  overflow: hidden;
+}
+
+.frame {
+  background: #fff;
+  border-radius: 54px 54px 0 0;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  background: linear-gradient(to top right, #6b1ec5, #9b44dd);
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  margin: 0;
+  border-radius: 54px 54px 0 0;
+}
+
+.title {
+  color: #fcee5d;
+  font-family: League Gothic, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 48px;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1;
+}
+
+.chartsContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  width: 100%;
+  padding: 36px;
+  margin-bottom: 0;
+}
+
+.chartWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 24px;
+  background-color: #f3f3f3;
+  border-radius: 24px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.chartWrapper:hover {
+  transform: translateY(-5px);
+}
+
+.chartTitle {
+  color: #414141;
+  font-family: League Gothic, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  margin: 0;
+  text-align: center;
+}
+
+.goBackButton {
+  background: linear-gradient(to top right, #6b1ec5, #9b44dd);
+  border: none;
+  border-radius: 12px;
+  color: #fcee5d;
+  font-family: Mulish, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 16px 32px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin: 0 0 36px 0;
+  width: 100%;
+  max-width: 150px;
+}
+
+.goBackButton:hover {
+  transform: scale(1.05);
+}
+
+.addGoalkeeperButton {
+  background: linear-gradient(to top right, #6b1ec5, #9b44dd);
+  border: none;
+  border-radius: 12px;
+  color: #fcee5d;
+  font-family: Mulish, -apple-system, Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-left: 20px;
+}
+
+.addGoalkeeperButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(107, 30, 197, 0.3);
+}
+
+.addGoalkeeperButton:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 991px) {
+  .boxContainer {
+    max-width: 550px;
+  }
+}
+
+@media (max-width: 768px) {
+  .chartWrapper {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .chartTitle {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 640px) {
+  .boxContainer {
+    max-width: 100%;
+  }
+
+  .chartsContainer {
+    padding: 24px;
+  }
+
+  .header {
+    padding: 16px;
+  }
+
+  .goBackButton {
+    padding: 12px 24px;
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+} 

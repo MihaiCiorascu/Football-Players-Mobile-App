@@ -1,0 +1,147 @@
+.pageWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    padding: 20px;
+    font-family: Mulish, sans-serif;
+  }
+  
+  .boxContainer {
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 480px;
+    overflow: hidden;
+  }
+  
+  .container {
+    padding: 12px;
+  }
+  
+  .frame {
+    background-color: #fff;
+    border-radius: 54px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 328px;
+    overflow: hidden;
+    box-shadow: 19px 11px 59px #00000017;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+    padding: 20px 0;
+  }
+  
+  .headerImage {
+    aspect-ratio: 1.49;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 12px 0 0;
+    align-self: stretch;
+    width: 100%;
+  }
+  
+  .formContainer {
+    width: 100%;
+    max-width: 355px;
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .formGroup {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .label {
+    display: block;
+    margin-bottom: 8px;
+    color: #7f36c7;
+    font-size: 16px;
+    text-align: center;
+  }
+  
+  .input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #7f36c7;
+    border-radius: 8px;
+    font-family: Mulish, -apple-system, Roboto, Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #fff;
+    color: #7f36c7;
+    text-align: center;
+  }
+  
+  .input::placeholder {
+    color: #b399d4;
+  }
+  
+  .input:focus {
+    outline: none;
+    border-color: #5a1c9e;
+    box-shadow: 0 0 0 2px rgba(127, 54, 199, 0.2);
+  }
+  
+  .saveButton {
+    background-color: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 295px;
+    margin-top: auto;
+    margin-bottom: 40px;
+    padding: 21px 70px;
+    box-shadow: 0 4px 21px #40028845;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    color: #7f36c7;
+    font-weight: 800;
+    font-size: 18px;
+    font-family: Mulish, -apple-system, Roboto, Helvetica, sans-serif;
+    text-align: center;
+    align-self: center;
+  }
+  
+  .saveButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px #40028860;
+  }
+  
+  .saveButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 15px #40028845;
+  }
+  
+  @media (max-width: 480px) {
+    .frame {
+      padding: 12px;
+    }
+  
+    .formContainer {
+      padding: 0 12px;
+    }
+  
+    .input {
+      font-size: 14px;
+    }
+  
+    .saveButton {
+      padding: 16px 40px;
+      font-size: 16px;
+    }
+  }
