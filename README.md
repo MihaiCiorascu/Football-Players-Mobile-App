@@ -19,8 +19,7 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 - Charts:  
   - Player count per position  
   - Rating category distribution  
-  - Age range distribution  
-- Pagination on the full player list  
+  - Age range distribution   
 
 </div>
 
@@ -30,10 +29,10 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 
   <br>
 
-  **Charts & Visual Stats:**
+  **Charts & Live Visual Stats:**
 
   <img src="https://github.com/user-attachments/assets/bef9dd9d-b9de-4845-bfc8-75d70af51d90" width="350"/>
-  <img src="https://github.com/user-attachments/assets/1a64413b-6db8-4de9-bbff-87e2551c9421" width="300"/>
+  <img src="https://github.com/user-attachments/assets/1a64413b-6db8-4de9-bbff-87e2551c9421" width="310"/>
   <img src="https://github.com/user-attachments/assets/b2323f98-69e8-4ac6-a732-56f5f3d68f27" width="320"/>
 </div>
 
