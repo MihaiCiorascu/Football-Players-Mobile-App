@@ -23,7 +23,7 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 
 </div>
 
-<br><br>
+<br>
 
   **The full players list**
 
