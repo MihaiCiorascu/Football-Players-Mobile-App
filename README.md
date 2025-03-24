@@ -4,19 +4,19 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 
 ## 🛠 Features
 
--  Create, Read, Update, Delete players
--  Search and filter by player name
--  Rating-based badge colors:
-  - 🔵 Blue: 9.0+
-  - 🟢 Green: 8.0–8.9
-  - 🟡 Yellow: 6.0–7.9
-  - 🔴 Red: <6.0
--  👑 for highest-rated player, 🤡 for lowest
--  Charts (Gold Tier):
-  - Player count per position
-  - Rating category distribution
-  - Age range distribution
--  Pagination on the full player list
+- Create, Read, Update, Delete players  
+- Search and filter by player name  
+- Rating-based badge colors:  
+  - 🔵 Blue: 9.0+  
+  - 🟢 Green: 8.0–8.9  
+  - 🟡 Yellow: 6.0–7.9  
+  - 🔴 Red: <6.0  
+- 👑 for highest-rated player, 🤡 for lowest  
+- Charts:  
+  - Player count per position  
+  - Rating category distribution  
+  - Age range distribution  
+- Pagination on the full player list  
 
 ## 📦 Tech Stack
 
