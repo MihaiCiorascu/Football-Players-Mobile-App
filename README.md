@@ -54,6 +54,32 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 - **Charts**: Chart.js
 - **Routing**: next/navigation
 
+## 🧩 Backend Features
+
+- **REST API**:  
+  - `POST`, `GET`, `PATCH`, `DELETE`  
+  - Filter and sort entities  
+
+- **Validation**:  
+  - Server-side checks for `POST` and `PATCH` requests  
+
+- **Unit Tests**:  
+  - Ensures backend operations work as expected  
+
+- **Offline Support**:  
+  - Detects network or server issues  
+  - Caches operations locally and syncs when back online  
+
+- **File Upload**:  
+  - Supports large uploads (e.g. videos) to/from server  
+
+- **Endless Scrolling**:  
+  - Sliding window pagination for large datasets  
+
+- **Live Updates**:  
+  - Backend thread generates new entities  
+  - WebSockets push updates to UI and charts in real time  
+
 ## 📁 Structure Overview
 
 - components/ – UI components like PlayerCard, Charts, Stats
