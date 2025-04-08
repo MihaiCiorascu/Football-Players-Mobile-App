@@ -1,15 +1,26 @@
 # ⚽ Football Players App
 
-This will be a full-stack React Native + Next.js + SQLite application for managing football player data. Currently, there is only the frontend in React + Next.js, which supports complete CRUD operations, statistics tracking and visual data insights.
+This is a full-stack React Native + Next.js + SQLite application for managing football player data. The frontend supports complete CRUD operations, statistics tracking and visual data insights, while the backend exposes a REST API with validation, real-time updates via WebSockets, offline support and file upload handling.
 
 
 ## 📦 Tech Stack
 
-- **Frontend**: React, Next.js
+- **Frontend**: React, Next.js, CSS Modules
+- **Backend**: Next.js, WebSockets
+- **Database**: SqLite
 - **State Management**: Context API
 - **Styling**: CSS Modules
 - **Charts**: Chart.js
 - **Routing**: next/navigation
+
+- ## 📦 Tech Stack
+
+- **Frontend**: React, Next.js, CSS Modules
+- **Backend**: Node.js, WebSockets
+- **State Management**: Context API, Zustand
+- **Data Visualization**: Chart.js, React-Chartjs-2
+- **Real-time Communication**: Socket.io
+- **Testing**: Jest, NYC (Istanbul)
 
 
 ## 🛠 Frontend Features
@@ -84,20 +95,34 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 
 ## 📁 Structure Overview
 
-- components/ – UI components like PlayerCard, Charts, Stats
-
-- context/ – Global PlayerContext
-
-- pages/ – All application pages (main view, full list, stats preview)
-
-- public/ – Static assets like player images
+src/
+├── app/ # Next.js app router pages
+├── components/ # Reusable UI components
+│ ├── FullList/ # Player list view
+│ ├── PlayerEdit/ # Player editing
+│ ├── PlayerStats/ # Statistics display
+│ └── Charts/ # Data visualization
+├── context/ # React context providers
+├── server/ # WebSocket server
+└── public/ # Static assets
 
   
 ## 🚀 Getting Started
 
+1. Install dependencies:
 ```bash
 npm install
-npm run dev
 ```
 
-Visit http://localhost:3000 in your browser.
+2. Start the development servers:
+```bash
+# Start both Next.js and WebSocket servers
+npm run start:all
+
+# Or start them separately
+npm run dev          # Next.js server
+node server.js       # WebSocket server
+```
+
+3. Open http://localhost:3000 in your browser
+```
