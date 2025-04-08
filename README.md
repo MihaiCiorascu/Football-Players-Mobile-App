@@ -2,6 +2,16 @@
 
 This will be a full-stack React Native + Next.js + SQLite application for managing football player data. Currently, there is only the frontend in React + Next.js, which supports complete CRUD operations, statistics tracking and visual data insights.
 
+
+## 📦 Tech Stack
+
+- **Frontend**: React, Next.js
+- **State Management**: Context API
+- **Styling**: CSS Modules
+- **Charts**: Chart.js
+- **Routing**: next/navigation
+
+
 ## 🛠 Frontend Features
 
 <div style="display: flex; align-items: flex-start; gap: 24px;">
@@ -45,14 +55,6 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 
 </div>
 
-
-## 📦 Tech Stack
-
-- **Frontend**: React, Next.js
-- **State Management**: Context API
-- **Styling**: CSS Modules
-- **Charts**: Chart.js
-- **Routing**: next/navigation
 
 ## 🧩 Backend Features
 
