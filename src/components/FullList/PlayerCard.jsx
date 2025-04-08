@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./PlayerCard.module.css";
-import { usePlayer } from "C:/Users/Mihai/football-players-web/src/context/PlayerContext.jsx";
+import { usePlayer } from "../../context/PlayerContext";
 import { useRouter } from "next/navigation";
 
 const POSITION_TRANSLATIONS = {
@@ -29,11 +29,12 @@ const PlayerCard = ({ player, onDelete, highlight }) => {
   const router = useRouter();
 
   const getRatingStyle = () => {
-    if (player.rating >= 9.0) {
+    const rating = parseFloat(player.rating);
+    if (rating >= 9.0) {
       return styles.ratingBlue;
-    } else if (player.rating >= 8.0) {
+    } else if (rating >= 8.0) {
       return styles.ratingGreen;
-    } else if (player.rating >= 6.0) {
+    } else if (rating >= 6.0) {
       return styles.ratingYellow;
     } else {
       return styles.ratingRed;

@@ -4,7 +4,7 @@ import styles from "./InputDesign.module.css";
 import SearchBar from "./SearchBar";
 import PlayerCard from "./PlayerCard";
 import CreatePlayerForm from "./CreatePlayerForm";
-import { usePlayer } from "C:/Users/Mihai/football-players-web/src/context/PlayerContext.jsx";
+import { usePlayer } from "../../context/PlayerContext";
 import { useRouter } from "next/navigation";
 import PieChartIcon from "../Icons/PieChartIcon";
 
@@ -19,6 +19,14 @@ function InputDesign() {
 
   const handleStatisticsClick = () => {
     router.push("/statistics");
+  };
+
+  const handleFilesClick = () => {
+    router.push("/files");
+  };
+
+  const handleTestNetworkClick = () => {
+    router.push("/test-network");
   };
 
   const handleSearch = (value) => {
@@ -44,13 +52,29 @@ function InputDesign() {
               <p className={styles.greeting}>Hello!</p>
               <h1 className={styles.welcomeHeading}>Welcome Back!</h1>
             </div>
-            <button
-              className={styles.statisticsButton}
-              onClick={handleStatisticsClick}
-              aria-label="View statistics"
-            >
-              <PieChartIcon className={styles.statisticsIcon} />
-            </button>
+            <div className={styles.headerButtons}>
+              <button
+                className={styles.filesButton}
+                onClick={handleFilesClick}
+                aria-label="Manage files"
+              >
+                Files
+              </button>
+              <button
+                className={styles.statisticsButton}
+                onClick={handleStatisticsClick}
+                aria-label="View statistics"
+              >
+                <PieChartIcon className={styles.statisticsIcon} />
+              </button>
+              <button
+                className={styles.testNetworkButton}
+                onClick={handleTestNetworkClick}
+                aria-label="Test network status"
+              >
+                Test Network
+              </button>
+            </div>
           </header>
 
           <SearchBar onSearch={handleSearch} searchTerm={searchTerm} />
@@ -88,7 +112,13 @@ function InputDesign() {
                 }
               }}
             >
-              See full stats
+              <span>View All Players</span>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
             </footer>
           </section>
 

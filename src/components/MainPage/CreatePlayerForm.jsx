@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./CreatePlayerForm.module.css";
-import { usePlayer } from "C:/Users/Mihai/football-players-web/src/context/PlayerContext.jsx";
+import { usePlayer } from "../../context/PlayerContext";
 import { useRouter } from "next/navigation";
 
 const CreatePlayerForm = () => {
@@ -57,7 +57,7 @@ const CreatePlayerForm = () => {
       return;
     }
   
-    const newId = players.length > 0 ? Math.max(...players.map((p) => p.id)) + 1 : 1; // ✅ Get last ID + 1
+    const newId = players.length > 0 ? Math.max(...players.map((p) => p.id)) + 1 : 1; // Get last ID + 1
 
     const newPlayer = {
       id: newId,
@@ -74,11 +74,11 @@ const CreatePlayerForm = () => {
       image2: '/newPlayer2.png'
     };
 
-    addPlayer(newPlayer); // ✅ Add player to in-memory storage
+    addPlayer(newPlayer); // Add player to in-memory storage
 
     alert("New player added!");
 
-    router.push(`/new-player-preview?fullName=${encodeURIComponent(fullName)}&age=${age}&position=${position}&shirtNumber=${shirtNumber}`);
+    router.push(`/player/${newId}/preview`);
 
     const queryParams = new URLSearchParams({
       fullName,

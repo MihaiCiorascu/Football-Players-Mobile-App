@@ -28,6 +28,28 @@
   margin-bottom: 20px;
 }
 
+.headerButtons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filesButton {
+  background: linear-gradient(to top right, #2196F3, #4CAF50);
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.filesButton:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to top right, #1e88e5, #43a047);
+}
+
 .statisticsButton {
   background: linear-gradient(to top right, #6b1ec5, #9b44dd);
   border: none;
@@ -104,6 +126,10 @@
     width: 20px;
     height: 20px;
   }
+  .filesButton {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
 }
 
 .statsFooter {
@@ -149,4 +175,23 @@
 .statsFooter:focus::after {
   opacity: 1;
   transform: translateX(0);
+}
+
+.testNetworkButton {
+  background: linear-gradient(135deg, #9333ea, #7e22ce);
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testNetworkButton:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #a855f7, #9333ea);
 }

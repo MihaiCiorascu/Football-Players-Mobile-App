@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { usePlayer } from "C:/Users/Mihai/football-players-web/src/context/PlayerContext.jsx";
+import { usePlayer } from "../../context/PlayerContext";
 import styles from "./PlayerEdit.module.css";
 
 export default function PlayerEdit({ params }) {

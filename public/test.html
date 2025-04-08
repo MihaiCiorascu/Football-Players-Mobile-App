@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Tests</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        #output {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            white-space: pre-wrap;
+            font-family: monospace;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>API Tests</h1>
+    <button onclick="runTests()">Run Tests</button>
+    <div id="output"></div>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:3000/api/players';
+        const output = document.getElementById('output');
+
+        // Helper function to make API calls
+        async function apiCall(endpoint, method = 'GET', body = null) {
+            const options = {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            };
+            
+            if (body) {
+                options.body = JSON.stringify(body);
+            }
+            
+            const response = await fetch(`${API_BASE_URL}${endpoint}`, options);
+            const data = await response.json();
+            return { status: response.status, data };
+        }
+
+        // Helper function to log to the output div
+        function log(message) {
+            output.textContent += message + '\n';
+        }
+
+        // Test all endpoints
+        async function runTests() {
+            output.textContent = ''; // Clear previous output
+            log('🧪 Starting API Tests...\n');
+
+            try {
+                // 1. Test GET all players
+                log('1. Testing GET all players...');
+                const { status: getStatus, data: allPlayers } = await apiCall('');
+                log(`Status: ${getStatus}`);
+                log(`Found ${allPlayers.length} players\n`);
+
+                // 2. Test filtering
+                log('2. Testing filtering (GK position)...');
+                const { data: filteredPlayers } = await apiCall('?filter={"position":"GK"}');
+                log(`Found ${filteredPlayers.length} goalkeepers\n`);
+
+                // 3. Test sorting
+                log('3. Testing sorting (by rating)...');
+                const { data: sortedPlayers } = await apiCall('?sortBy=rating&order=desc');
+                log('Top 3 players by rating:');
+                sortedPlayers.slice(0, 3).forEach(player => {
+                    log(`${player.name}: ${player.rating}`);
+                });
+                log('');
+
+                // 4. Test POST new player
+                log('4. Testing POST new player...');
+                const newPlayer = {
+                    name: "Test Player",
+                    position: "ST",
+                    rating: "8.5",
+                    number: "99",
+                    age: "25",
+                    goals: "0",
+                    image: "https://example.com/image.jpg",
+                    image1: "/test1.png",
+                    image2: "/test2.png"
+                };
+                const { status: postStatus, data: createdPlayer } = await apiCall('', 'POST', newPlayer);
+                log(`Status: ${postStatus}`);
+                log('Created player: ' + createdPlayer.name + '\n');
+
+                // 5. Test PATCH update
+                log('5. Testing PATCH update...');
+                const update = {
+                    id: createdPlayer.id,
+                    rating: "9.0"
+                };
+                const { status: patchStatus, data: updatedPlayer } = await apiCall('', 'PATCH', update);
+                log(`Status: ${patchStatus}`);
+                log('Updated rating: ' + updatedPlayer.rating + '\n');
+
+                // 6. Test DELETE
+                log('6. Testing DELETE...');
+                const { status: deleteStatus } = await apiCall(`?id=${createdPlayer.id}`, 'DELETE');
+                log(`Status: ${deleteStatus}\n`);
+
+                log('✅ All tests completed successfully!');
+
+            } catch (error) {
+                log('❌ Test failed: ' + error.message);
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -14,41 +14,17 @@ import { useRouter } from "next/navigation";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-const Statistics = () => {
+export default function StatisticsPage() {
   const { players, addPlayer } = usePlayer();
   const router = useRouter();
   const [positionData, setPositionData] = useState(null);
   const [ageData, setAgeData] = useState(null);
   const [ratingData, setRatingData] = useState(null);
+  const [selectedPosition, setSelectedPosition] = useState('All');
 
   const handleGoBack = () => {
     router.push('/');
   };
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const newId = players.length > 0 ? Math.max(...players.map((p) => p.id)) + 1 : 1;
-      
-      const newPlayer = {
-        id: newId,
-        name: "Veteran Goalkeeper",
-        age: "82",
-        position: "GK",
-        goals: "0",
-        rating: "5.2",
-        ratingColor: "red",
-        number: "99",
-        link: `/player/${newId}`,
-        image: "https://cdn.builder.io/api/v1/image/assets%2F6c19a84570cc4b7ebcefc63534859305%2Fb17a7bfed461553f6be1a921288e1c35c2749b1db9c45baf0fb5107350e5fee1",
-        image1: '/newPlayer1.png',
-        image2: '/newPlayer2.png'
-      };
-
-      addPlayer(newPlayer);
-    }, 2000); // Add goalkeeper every 2 seconds
-
-    return () => clearInterval(interval); // Cleanup interval on component unmount
-  }, [players, addPlayer]);
 
   useEffect(() => {
     if (!players) return;
@@ -157,6 +133,10 @@ const Statistics = () => {
     },
   };
 
+  const filteredPlayers = selectedPosition === 'All'
+    ? players
+    : players.filter(player => player.position === selectedPosition);
+
   return (
     <div className={styles.pageWrapper}>
       <div className={styles.boxContainer}>
@@ -191,6 +171,4 @@ const Statistics = () => {
       </div>
     </div>
   );
-};
-
-export default Statistics; 
+} 

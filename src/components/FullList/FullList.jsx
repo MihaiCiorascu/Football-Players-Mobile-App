@@ -1,37 +1,80 @@
 "use client";
 
-import React, { useState } from "react";
-import { usePlayer } from "C:/Users/Mihai/football-players-web/src/context/PlayerContext.jsx";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { usePlayer } from "@/context/PlayerContext";
 import styles from "./FullList.module.css";
 import SearchBar from "./SearchBar";
 import PlayerCard from "./PlayerCard";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
-function FullList() {
+const FullList = () => {
   const { players, deletePlayer } = usePlayer();
+  const [displayedPlayers, setDisplayedPlayers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const [offset, setOffset] = useState(0);
+  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const observer = useRef();
+  const LIMIT = 10;
   const router = useRouter();
 
-  const filteredPlayers = players.filter((player) =>
-    player.name.toLowerCase().startsWith(searchTerm.toLowerCase())
-  );
+  // Update displayed players when players or search term changes
+  useEffect(() => {
+    const filteredPlayers = searchTerm
+      ? players.filter(player => 
+        player.name.toLowerCase().startsWith(searchTerm.toLowerCase())
+        )
+      : players;
 
-  const getPlayerHighlight = (player) => {
-    if (!filteredPlayers.length) return "";
+    const start = 0;
+    const end = offset + LIMIT;
+    const newDisplayedPlayers = filteredPlayers.slice(start, end);
+    
+    setDisplayedPlayers(newDisplayedPlayers);
+    setHasMore(end < filteredPlayers.length);
+  }, [players, searchTerm, offset]);
 
-    const playerRatings = filteredPlayers.map(p => parseFloat(p.rating));
-    const highestRating = Math.max(...playerRatings);
-    const lowestRating = Math.min(...playerRatings);
+  // Reset pagination when search term changes
+  useEffect(() => {
+    setOffset(0);
+    setHasMore(true);
+  }, [searchTerm]);
 
-    if (parseFloat(player.rating) === highestRating) return "highest";
-    if (parseFloat(player.rating) === lowestRating) return "lowest";
+  // Intersection Observer callback
+  const lastPlayerElementRef = useCallback(node => {
+    if (loading) return;
+    if (observer.current) observer.current.disconnect();
+    
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore) {
+        loadMorePlayers();
+      }
+    });
+    
+    if (node) observer.current.observe(node);
+  }, [loading, hasMore]);
 
-
-    return "";
+  // Function to load more players with a delay
+  const loadMorePlayers = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setOffset(prev => prev + LIMIT);
+      setLoading(false);
+    }, 1000);
   };
 
-  const handleGoBack = () => {
-    router.push('/');
+  // Handle search input change
+  const handleSearch = (value) => {
+    console.log('Search term changed:', value);
+    setSearchTerm(value);
+  };
+
+  // Handle player deletion
+  const handleDeletePlayer = (id) => {
+    deletePlayer(id);
+    setDisplayedPlayers(prev => prev.filter(player => player.id !== id));
   };
 
   return (
@@ -48,29 +91,55 @@ function FullList() {
               <h1 className={styles.welcomeHeading}>Welcome Back!</h1>
             </header>
 
-            <SearchBar onSearch={setSearchTerm} searchTerm={searchTerm} />
+            <SearchBar onSearch={handleSearch} searchTerm={searchTerm} />
 
             <section>
               <h2 className={styles.sectionHeading}>Recent Player Performances</h2>
               <div className={styles.performanceContainer}>
-                {filteredPlayers.length > 0 ? (
-                  filteredPlayers.map((player) => (
-                    <PlayerCard
-                      key={player.id}
-                      player={player}
-                      onDelete={() => deletePlayer(player.id)}
-                      highlight={getPlayerHighlight(player)}
-                    />
-                  ))
+                {displayedPlayers.length > 0 ? (
+                  displayedPlayers.map((player, index) => {
+                    // Convert all ratings to numbers for comparison
+                    const ratings = displayedPlayers.map(p => parseFloat(p.rating));
+                    const maxRating = Math.max(...ratings);
+                    const minRating = Math.min(...ratings);
+                    const currentRating = parseFloat(player.rating);
+                    
+                    const isHighest = currentRating === maxRating;
+                    const isLowest = currentRating === minRating;
+                    const highlight = isHighest ? "highest" : isLowest ? "lowest" : null;
+
+                    console.log(`Player: ${player.name}, Rating: ${currentRating}, Highlight: ${highlight}`); // Debug log
+
+                    return (
+                      <div
+                        key={player.id}
+                        ref={index === displayedPlayers.length - 1 ? lastPlayerElementRef : null}
+                      >
+                        <PlayerCard 
+                          player={player} 
+                          onDelete={() => handleDeletePlayer(player.id)}
+                          highlight={highlight}
+                        />
+                      </div>
+                    );
+                  })
                 ) : (
-                  <p className={styles.noResults}>No players found matching "{searchTerm}"</p>
+                  <p className={styles.noResults}>
+                    {searchTerm ? `No players found matching "${searchTerm}"` : "No players found"}
+                  </p>
                 )}
               </div>
             </section>
 
+            {loading && <div className={styles.loading}>Loading more players...</div>}
+            {error && <div className={styles.error}>{error}</div>}
+            {!hasMore && !loading && displayedPlayers.length > 0 && (
+              <div className={styles.endMessage}>No more players to load</div>
+            )}
+
             <button
               className={styles.goBackButton}
-              onClick={handleGoBack}
+              onClick={() => router.push('/')}
               aria-label="Go back to main page"
             >
               GO BACK
@@ -80,7 +149,7 @@ function FullList() {
       </div>
     </div>
   );
-}
+};
 
 export default FullList;
 
