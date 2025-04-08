@@ -95,16 +95,15 @@ This is a full-stack React Native + Next.js + SQLite application for managing fo
 
 ## 📁 Structure Overview
 
-src/
-├── app/ # Next.js app router pages
-├── components/ # Reusable UI components
-│ ├── FullList/ # Player list view
-│ ├── PlayerEdit/ # Player editing
-│ ├── PlayerStats/ # Statistics display
-│ └── Charts/ # Data visualization
-├── context/ # React context providers
-├── server/ # WebSocket server
-└── public/ # Static assets
+- app/ - Next.js app router pages
+
+- components/ – UI components like PlayerCard, Charts, Stats
+
+- context/ – Global PlayerContext
+
+- public/ – Static assets like player images
+
+- server/ - WebSocket server
 
   
 ## 🚀 Getting Started
