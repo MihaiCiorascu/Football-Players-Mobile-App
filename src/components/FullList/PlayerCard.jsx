@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./PlayerCard.module.css";
-import { usePlayer } from "../../context/PlayerContext";
+import { usePlayer } from "../../context/PlayerContext.jsx";
 import { useRouter } from "next/navigation";
 
 const POSITION_TRANSLATIONS = {

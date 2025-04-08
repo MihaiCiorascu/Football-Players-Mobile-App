@@ -56,7 +56,6 @@ const FullList = () => {
     if (node) observer.current.observe(node);
   }, [loading, hasMore]);
 
-  // Function to load more players with a delay
   const loadMorePlayers = () => {
     setLoading(true);
     setTimeout(() => {
@@ -65,13 +64,11 @@ const FullList = () => {
     }, 1000);
   };
 
-  // Handle search input change
   const handleSearch = (value) => {
     console.log('Search term changed:', value);
     setSearchTerm(value);
   };
 
-  // Handle player deletion
   const handleDeletePlayer = (id) => {
     deletePlayer(id);
     setDisplayedPlayers(prev => prev.filter(player => player.id !== id));

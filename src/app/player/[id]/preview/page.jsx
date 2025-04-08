@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { usePlayer } from "C:/Users/Mihai/football-players-web/src/context/PlayerContext.jsx";
+import { usePlayer } from "../../../context/PlayerContext.jsx";
 import { useRouter } from "next/navigation";
 import styles from "./PlayerPreview.module.css";
 

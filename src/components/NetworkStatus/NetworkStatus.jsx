@@ -19,7 +19,6 @@ export default function NetworkStatus() {
     console.log('Connection type:', connectionType);
     console.log('Connection downlink:', connectionDownlink);
     
-    // Create debug info
     const info = `Online: ${online}, Connection: ${connectionType}, Downlink: ${connectionDownlink}`;
     setDebugInfo(info);
     
@@ -30,15 +29,12 @@ export default function NetworkStatus() {
   useEffect(() => {
     console.log('NetworkStatus rendered, isOnline:', isOnline, 'rawIsOnline:', rawIsOnline, 'localIsOnline:', localIsOnline, 'isServerAvailable:', isServerAvailable, 'manualOffline:', manualOffline);
     
-    // Initial check
     checkBrowserOnlineStatus();
     
-    // Set up interval to check online status
     const intervalId = setInterval(() => {
       checkBrowserOnlineStatus();
-    }, 2000); // Check every 2 seconds
+    }, 2000);
     
-    // Add event listeners for online/offline events
     const handleOnline = () => {
       console.log('Browser online event triggered in NetworkStatus');
       checkBrowserOnlineStatus();
@@ -59,10 +55,8 @@ export default function NetworkStatus() {
     };
   }, [isOnline, rawIsOnline, isServerAvailable, manualOffline]);
 
-  // Determine if we should show offline status
   const shouldShowOffline = !localIsOnline || manualOffline;
   
-  // Determine if we should show server down status
   const shouldShowServerDown = localIsOnline && !isServerAvailable && !manualOffline;
 
   if (!shouldShowOffline && !shouldShowServerDown) {

@@ -40,7 +40,6 @@ export default function FilesPage() {
     }
   };
 
-  // Function to handle file upload
   const handleFileUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -50,11 +49,9 @@ export default function FilesPage() {
       setUploadProgress(0);
       setUploadError(null);
       
-      // Create form data
       const formData = new FormData();
       formData.append('file', file);
       
-      // Upload the file
       const response = await fetch('/api/files/upload', {
         method: 'POST',
         body: formData,
@@ -66,10 +63,8 @@ export default function FilesPage() {
         throw new Error(data.error || 'Failed to upload file');
       }
       
-      // Refresh the file list
       fetchFiles();
       
-      // Reset the file input
       event.target.value = '';
     } catch (err) {
       console.error('Error uploading file:', err);
@@ -80,7 +75,6 @@ export default function FilesPage() {
     }
   };
 
-  // Function to handle file deletion
   const handleDeleteFile = async (filename) => {
     if (!confirm('Are you sure you want to delete this file?')) return;
     
@@ -99,7 +93,6 @@ export default function FilesPage() {
         throw new Error(data.error || 'Failed to delete file');
       }
       
-      // Refresh the file list
       fetchFiles();
     } catch (err) {
       console.error('Error deleting file:', err);
@@ -107,7 +100,6 @@ export default function FilesPage() {
     }
   };
 
-  // Function to format file size
   const formatFileSize = (bytes) => {
     if (bytes === 0) return '0 Bytes';
     
@@ -118,12 +110,10 @@ export default function FilesPage() {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   };
 
-  // Function to format date
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleString();
   };
 
-  // Function to handle back button click
   const handleBackClick = () => {
     router.push('/');
   };

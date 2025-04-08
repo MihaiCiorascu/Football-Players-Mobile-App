@@ -4,7 +4,7 @@ import styles from "./InputDesign.module.css";
 import SearchBar from "./SearchBar";
 import PlayerCard from "./PlayerCard";
 import CreatePlayerForm from "./CreatePlayerForm";
-import { usePlayer } from "../../context/PlayerContext";
+import { usePlayer } from "../../context/PlayerContext.jsx";
 import { useRouter } from "next/navigation";
 import PieChartIcon from "../Icons/PieChartIcon";
 

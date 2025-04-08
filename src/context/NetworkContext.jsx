@@ -13,12 +13,10 @@ export function NetworkProvider({ children }) {
   const [manualOffline, setManualOffline] = useState(false);
   const [manualServerDown, setManualServerDown] = useState(false);
 
-  // Check if the server is available
   const checkServerAvailability = async () => {
     try {
       console.log('Checking server availability...');
       
-      // If manual server down is enabled, return false
       if (manualServerDown) {
         console.log('Manual server down enabled, returning false');
         setIsServerAvailable(false);
@@ -40,23 +38,19 @@ export function NetworkProvider({ children }) {
     }
   };
 
-  // Function to toggle manual offline mode
   const toggleManualOffline = () => {
     setManualOffline(!manualOffline);
   };
 
-  // Function to toggle manual server down mode
   const toggleManualServerDown = () => {
     setManualServerDown(!manualServerDown);
   };
 
-  // Function to check online status directly
   const checkOnlineStatus = async () => {
     const navigatorOnline = navigator.onLine;
     console.log('Navigator online status:', navigatorOnline);
 
     try {
-      // Try to fetch a small resource from a reliable CDN
       const testResponse = await fetch('https://www.google.com/favicon.ico', {
         mode: 'no-cors',
         cache: 'no-store',
@@ -91,7 +85,6 @@ export function NetworkProvider({ children }) {
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
-    // Initial checks
     const initialCheck = async () => {
       const isOnline = await checkOnlineStatus();
       if (isOnline) {
@@ -100,7 +93,6 @@ export function NetworkProvider({ children }) {
     };
     initialCheck();
 
-    // Set up interval for periodic checks
     const statusInterval = setInterval(async () => {
       const isOnline = await checkOnlineStatus();
       if (isOnline && !manualOffline) {
@@ -115,7 +107,6 @@ export function NetworkProvider({ children }) {
     };
   }, []);
 
-  // Determine the effective online status
   const effectiveOnlineStatus = isOnline && !manualOffline;
 
   return (

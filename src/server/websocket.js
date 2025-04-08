@@ -58,6 +58,7 @@ function initWebSocket(server) {
     });
   });
 
+  // Start generating players more frequently
   setInterval(() => {
     const newPlayer = generateRandomPlayer();
     allPlayers.push(newPlayer); // Add to shared state
