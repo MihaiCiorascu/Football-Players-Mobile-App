@@ -2,7 +2,7 @@
 
 This will be a full-stack React Native + Next.js + SQLite application for managing football player data. Currently, there is only the frontend in React + Next.js, which supports complete CRUD operations, statistics tracking and visual data insights.
 
-## 🛠 Features
+## 🛠 Frontend Features
 
 <div style="display: flex; align-items: flex-start; gap: 24px;">
 
