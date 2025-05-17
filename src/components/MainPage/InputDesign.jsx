@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./InputDesign.module.css";
 import SearchBar from "./SearchBar";
 import PlayerCard from "./PlayerCard";
@@ -11,7 +11,20 @@ import PieChartIcon from "../Icons/PieChartIcon";
 function InputDesign() {
     const { players} = usePlayer();
     const [searchTerm, setSearchTerm] = useState("");
+    const [isAdmin, setIsAdmin] = useState(false);
     const router = useRouter();
+
+    useEffect(() => {
+      const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null;
+      if (token) {
+        try {
+          const payload = JSON.parse(atob(token.split('.')[1]));
+          setIsAdmin(payload.role === "admin");
+        } catch (e) {
+          setIsAdmin(false);
+        }
+      }
+    }, []);
 
   const handleStatsClick = () => {
     router.push("/full-list");
@@ -125,6 +138,24 @@ function InputDesign() {
           <section>
             <h2 className={styles.sectionHeading}>Create a Player</h2>
             <CreatePlayerForm />
+            {isAdmin && (
+              <button
+                style={{
+                  marginTop: 24,
+                  marginLeft: 24,
+                  padding: "12px 24px",
+                  background: "#6b1ec5",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: 6,
+                  cursor: "pointer",
+                  fontWeight: "bold"
+                }}
+                onClick={() => router.push("/admin/monitored-users")}
+              >
+                View Monitored Users
+              </button>
+            )}
           </section>
         </main>
       </div>

@@ -47,7 +47,7 @@ const CreatePlayerForm = () => {
   };
   
 
-  const handleAddPlayerClick = () => {
+  const handleAddPlayerClick = async () => {
     if (errors.age || errors.shirtNumber || errors.position || !age || !shirtNumber || !position) {
       setErrors((prev) => ({
         ...prev,
@@ -57,36 +57,25 @@ const CreatePlayerForm = () => {
       return;
     }
   
-    const newId = players.length > 0 ? Math.max(...players.map((p) => p.id)) + 1 : 1; // Get last ID + 1
-
-    const newPlayer = {
-      id: newId,
+    // Only send the fields your backend expects
+    const playerData = {
       name: fullName,
-      age: age,
+      age: parseInt(age),
       position,
-      goals: "0",
-      rating: "5.0",
-      ratingColor: "red",
-      number: shirtNumber,
-      link: `/player/${newId}`,
-      image: "https://cdn.builder.io/api/v1/image/assets%2F6c19a84570cc4b7ebcefc63534859305%2Fb17a7bfed461553f6be1a921288e1c35c2749b1db9c45baf0fb5107350e5fee1",
-      image1: '/newPlayer1.png',
-      image2: '/newPlayer2.png'
+      number: parseInt(shirtNumber)
     };
 
-    addPlayer(newPlayer); // Add player to in-memory storage
+    try {
+      // Await the real player object from the backend
+      const newPlayer = await addPlayer(playerData);
 
     alert("New player added!");
 
-    router.push(`/player/${newId}/preview`);
-
-    const queryParams = new URLSearchParams({
-      fullName,
-      age,
-      position,
-      shirtNumber,
-      goals,
-    }).toString();
+      // Use the real database ID for redirect
+      router.push(`/player/${newPlayer.id}/preview`);
+    } catch (error) {
+      alert("Failed to add player: " + error.message);
+    }
   };
   
 

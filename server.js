@@ -1,5 +1,6 @@
-const http = require('http');
-const { initWebSocket } = require('./src/server/websocket');
+import http from 'http';
+import { initWebSocket } from './src/server/websocket.js';
+import './src/server/backgroundMonitor.js'; // Start background monitoring
 
 const server = http.createServer((req, res) => {
   res.writeHead(200);

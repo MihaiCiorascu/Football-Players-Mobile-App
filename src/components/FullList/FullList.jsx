@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const FullList = () => {
-  const { players, deletePlayer } = usePlayer();
+  const { players, deletePlayer, fetchPlayers } = usePlayer();
   const [displayedPlayers, setDisplayedPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hasMore, setHasMore] = useState(true);
@@ -19,6 +19,10 @@ const FullList = () => {
   const observer = useRef();
   const LIMIT = 10;
   const router = useRouter();
+
+  useEffect(() => {
+    fetchPlayers(1);
+  }, []);
 
   // Update displayed players when players or search term changes
   useEffect(() => {
@@ -136,7 +140,7 @@ const FullList = () => {
 
             <button
               className={styles.goBackButton}
-              onClick={() => router.push('/')}
+              onClick={() => router.push('/home')}
               aria-label="Go back to main page"
             >
               GO BACK

@@ -1,4 +1,4 @@
-const { Server } = require('socket.io');
+import { Server } from 'socket.io';
 
 let io;
 let allPlayers = []; // Shared state for all players
@@ -59,11 +59,11 @@ function initWebSocket(server) {
   });
 
   // Start generating players more frequently
-  setInterval(() => {
-    const newPlayer = generateRandomPlayer();
-    allPlayers.push(newPlayer); // Add to shared state
-    io.emit('newPlayer', newPlayer); // Broadcast to all clients
-  }, 2000);
+  // setInterval(() => {
+  //   const newPlayer = generateRandomPlayer();
+  //   allPlayers.push(newPlayer); // Add to shared state
+  //   io.emit('newPlayer', newPlayer); // Broadcast to all clients
+  // }, 2000);
 }
 
-module.exports = { initWebSocket }; 
+export { initWebSocket }; 

@@ -94,12 +94,37 @@ const defaultPlayers = [
 const PLAYERS_PER_PAGE = 200;
 
 export function PlayerProvider({ children }) {
-  const [players, setPlayers] = useState([...defaultPlayers]);
-  const [socket, setSocket] = useState(null);
+  const [players, setPlayers] = useState([]);
+  const [totalPlayers, setTotalPlayers] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [socket, setSocket] = useState(null);
+
+  const fetchPlayers = async (page = 1) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`/api/players?page=${page}&limit=${PLAYERS_PER_PAGE}`, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      console.log('Response status:', response.status);
+      if (!response.ok) {
+        throw new Error('Failed to fetch players');
+      }
+      const data = await response.json();
+      console.log('Fetched players:', data);
+      setPlayers(data.players);
+      setTotalPlayers(data.total);
+      setCurrentPage(data.currentPage);
+    } catch (error) {
+      console.error('Error fetching players:', error);
+    }
+  };
 
   useEffect(() => {
+    fetchPlayers(1);
+
     // Initialize WebSocket connection
     const newSocket = io('http://localhost:3001', {
       transports: ['websocket'],
@@ -113,18 +138,6 @@ export function PlayerProvider({ children }) {
     // Set up event listeners
     newSocket.on('connect', () => {
       console.log('Connected to WebSocket server');
-      newSocket.emit('getInitialPlayers');
-    });
-
-    newSocket.on('initialPlayers', (initialPlayers) => {
-      console.log('Received initial players:', initialPlayers.length);
-      if (initialPlayers && initialPlayers.length > 0) {
-        setPlayers(prevPlayers => {
-          const existingIds = new Set(prevPlayers.map(p => p.id));
-          const newPlayers = initialPlayers.filter(p => !existingIds.has(p.id));
-          return [...prevPlayers, ...newPlayers];
-        });
-      }
     });
 
     newSocket.on('newPlayer', (newPlayer) => {
@@ -141,50 +154,119 @@ export function PlayerProvider({ children }) {
     };
   }, []);
 
-  const addPlayer = (player) => {
-    setPlayers(prevPlayers => [...prevPlayers, player]);
+  const addPlayer = async (playerData) => {
+    try {
+      // Format the data according to the schema requirements
+      const formattedData = {
+        name: playerData.name,
+        number: parseInt(playerData.number),
+        age: parseInt(playerData.age),
+        position: playerData.position,
+        rating: 5.0
+      };
+
+      // Get the JWT token from localStorage (or however you store it)
+      const token = localStorage.getItem('token');
+
+      const response = await fetch('/api/players', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(formattedData),
+      });
+
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.error || responseData.details || 'Failed to add player');
+      }
+
+      const newPlayer = responseData.player;
+      // Update the players list
+      setPlayers(prevPlayers => {
+        const updatedPlayers = [newPlayer, ...prevPlayers];
+        return updatedPlayers;
+      });
+      setTotalPlayers(prev => prev + 1);
+      return newPlayer;
+    } catch (error) {
+      console.error('Error in addPlayer:', error);
+      throw error;
+    }
   };
 
-  const updatePlayer = (id, updatedData) => {
-    setPlayers(prevPlayers =>
-      prevPlayers.map(player =>
-        player.id === id ? { ...player, ...updatedData } : player
-      )
-    );
+  const updatePlayer = async (id, updatedFields) => {
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetch(`/api/players?id=${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(updatedFields),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update player');
+      }
+
+      const updatedPlayer = await response.json();
+      // Refresh the current page to show the updated player
+      await fetchPlayers(currentPage);
+      return updatedPlayer;
+    } catch (error) {
+      console.error('Error updating player:', error);
+      throw error;
+    }
   };
 
-  const deletePlayer = (id) => {
-    setPlayers(prevPlayers => prevPlayers.filter(player => player.id !== id));
+  const deletePlayer = async (id) => {
+    try {
+      const response = await fetch(`/api/players?id=${id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to delete player');
+      }
+
+      // Refresh the current page to update the list
+      await fetchPlayers(currentPage);
+    } catch (error) {
+      console.error('Error deleting player:', error);
+      throw error;
+    }
   };
 
-  const getPaginatedPlayers = () => {
-    const startIndex = 0;
-    const endIndex = currentPage * PLAYERS_PER_PAGE;
-    return players.slice(startIndex, endIndex);
-  };
-
-  const loadMorePlayers = () => {
+  const loadMorePlayers = async () => {
+    if (currentPage * PLAYERS_PER_PAGE >= totalPlayers) return;
+    
     setLoading(true);
-    setTimeout(() => {
-      setCurrentPage(prev => prev + 1);
+    try {
+      await fetchPlayers(currentPage + 1);
+    } finally {
       setLoading(false);
-    }, 1000);
+    }
   };
 
   const hasMorePlayers = () => {
-    return currentPage * PLAYERS_PER_PAGE < players.length;
+    return currentPage * PLAYERS_PER_PAGE < totalPlayers;
   };
 
   return (
     <PlayerContext.Provider value={{ 
-      players: getPaginatedPlayers(), 
-      totalPlayers: players.length,
+      players, 
+      totalPlayers,
       addPlayer, 
       updatePlayer, 
       deletePlayer,
       loadMorePlayers,
       hasMorePlayers,
-      loading
+      loading,
+      currentPage,
+      fetchPlayers
     }}>
       {children}
     </PlayerContext.Provider>

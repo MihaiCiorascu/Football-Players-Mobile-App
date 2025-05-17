@@ -2,13 +2,14 @@
 
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
-import { usePlayer } from "../../../context/PlayerContext.jsx";
+import { usePlayer } from "../../../../context/PlayerContext.jsx";
 import styles from "./PlayerEdit.module.css";
 
 export default function PlayerEdit({ params }) {
+  const { id } = React.use(params); // Unwrap params Promise
   const { players, updatePlayer } = usePlayer();
   const router = useRouter();
-  const player = players.find(p => p.id === parseInt(params.id));
+  const player = players.find(p => p.id === parseInt(id));
 
   if (!player) {
     return <div>Player not found</div>;
@@ -21,7 +22,11 @@ export default function PlayerEdit({ params }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updatePlayer(player.id, newPlayerName, newPlayerNumber, newPosition);
+    updatePlayer(player.id, {
+      name: newPlayerName,
+      number: parseInt(newPlayerNumber),
+      position: newPosition
+    });
     alert("Player data updated!");
     router.push("/full-list");
   };
