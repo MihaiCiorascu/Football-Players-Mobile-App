@@ -1,8 +1,20 @@
 # ⚽ Football Players App
 
-This will be a full-stack React Native + Next.js + SQLite application for managing football player data. Currently, there is only the frontend in React + Next.js, which supports complete CRUD operations, statistics tracking and visual data insights.
+This is a full-stack React Native + Next.js + SQLite application for managing football player data. The frontend supports complete CRUD operations, statistics tracking and visual data insights, while the backend exposes a REST API with validation, real-time updates via WebSockets, offline support and file upload handling.
 
-## 🛠 Features
+
+## 📦 Tech Stack
+
+- **Frontend**: React, Next.js, CSS Modules
+- **Backend**: Next.js, WebSockets
+- **Database**: SqLite
+- **State Management**: Context API
+- **Styling**: CSS Modules
+- **Charts**: Chart.js, React-Chartjs-2
+- **Routing**: next/navigation
+- **Testing**: Jest, NYC (Istanbul)
+
+## 🛠 Frontend Features
 
 <div style="display: flex; align-items: flex-start; gap: 24px;">
 
@@ -46,30 +58,60 @@ This will be a full-stack React Native + Next.js + SQLite application for managi
 </div>
 
 
-## 📦 Tech Stack
+## 🧩 Backend Features
 
-- **Frontend**: React, Next.js
-- **State Management**: Context API
-- **Styling**: CSS Modules
-- **Charts**: Chart.js
-- **Routing**: next/navigation
+- **REST API**:  
+  - `POST`, `GET`, `PATCH`, `DELETE`  
+  - Filter and sort entities  
+
+- **Validation**:  
+  - Server-side checks for `POST` and `PATCH` requests  
+
+- **Unit Tests**:  
+  - Ensures backend operations work as expected  
+
+- **Offline Support**:  
+  - Detects network or server issues  
+  - Caches operations locally and syncs when back online  
+
+- **File Upload**:  
+  - Supports large uploads (e.g. videos) to/from server  
+
+- **Endless Scrolling**:  
+  - Sliding window pagination for large datasets  
+
+- **Live Updates**:  
+  - Backend thread generates new entities  
+  - WebSockets push updates to UI and charts in real time  
 
 ## 📁 Structure Overview
+
+- app/ - Next.js app router pages
 
 - components/ – UI components like PlayerCard, Charts, Stats
 
 - context/ – Global PlayerContext
 
-- pages/ – All application pages (main view, full list, stats preview)
-
 - public/ – Static assets like player images
+
+- server/ - WebSocket server
 
   
 ## 🚀 Getting Started
 
+1. Install dependencies:
 ```bash
 npm install
-npm run dev
 ```
 
-Visit http://localhost:3000 in your browser.
+2. Start the development servers:
+```bash
+# Start both Next.js and WebSocket servers
+npm run start:all
+
+# Or start them separately
+npm run dev          # Next.js server
+node server.js       # WebSocket server
+```
+
+3. Open http://localhost:3000 in your browser
