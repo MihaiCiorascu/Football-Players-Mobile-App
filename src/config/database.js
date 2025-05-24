@@ -1,6 +1,7 @@
 import { Sequelize } from 'sequelize';
 import path from 'path';
 import sqlite3 from 'sqlite3';
+import pg from 'pg';
 
 let sequelize;
 
@@ -9,6 +10,7 @@ if (process.env.DATABASE_URL) {
   sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     protocol: 'postgres',
+    dialectModule: pg,
     dialectOptions: {
       ssl: {
         require: true,
