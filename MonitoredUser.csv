@@ -1,0 +1,4 @@
+id,user_id,reason,detected_at,created_at,updated_at
+1,6,"Suspicious activity detected - rapid player creation","2025-05-12 10:09:41.777 +00:00","2025-05-12 10:09:41.781 +00:00","2025-05-12 10:09:41.781 +00:00"
+2,7,"Suspicious activity detected - rapid player creation","2025-05-13 07:35:55.488 +00:00","2025-05-13 07:35:55.490 +00:00","2025-05-13 07:35:55.490 +00:00"
+3,8,"Suspicious activity detected - rapid player creation","2025-05-19 10:00:54.729 +00:00","2025-05-19 10:00:54.731 +00:00","2025-05-19 10:00:54.731 +00:00"
