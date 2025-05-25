@@ -21,7 +21,11 @@ export default async function handler(req, res) {
     if (!valid) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
-    const token = jwt.sign({ id: user.id, username: user.username, role: user.role }, JWT_SECRET, { expiresIn: '1d' });
+    const token = jwt.sign(
+      { id: user.id, username: user.username, role: user.role }, 
+      JWT_SECRET, 
+      { expiresIn: '30d' }
+    );
     return res.status(200).json({ token, user: { id: user.id, username: user.username, role: user.role } });
   } catch (err) {
     return res.status(500).json({ error: 'Login failed', details: err.message });
