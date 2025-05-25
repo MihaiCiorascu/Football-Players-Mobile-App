@@ -126,12 +126,15 @@ export function PlayerProvider({ children }) {
     fetchPlayers(1);
 
     // Initialize WebSocket connection
-    const newSocket = io('http://localhost:3001', {
-      transports: ['websocket'],
-      reconnection: true,
-      reconnectionAttempts: 5,
-      reconnectionDelay: 1000,
-    });
+    const newSocket = io(
+      process.env.NEXT_PUBLIC_WS_URL || 'http://localhost:3001',
+      {
+        transports: ['websocket'],
+        reconnection: true,
+        reconnectionAttempts: 5,
+        reconnectionDelay: 1000,
+      }
+    );
 
     setSocket(newSocket);
 
