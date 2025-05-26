@@ -1,8 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function TwoFactorPage() {
+function TwoFactorForm() {
   const [code, setCode] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -65,5 +65,13 @@ export default function TwoFactorPage() {
       </form>
       {error && <div style={{ color: "red", marginTop: 10 }}>{error}</div>}
     </div>
+  );
+}
+
+export default function TwoFactorPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TwoFactorForm />
+    </Suspense>
   );
 } 
