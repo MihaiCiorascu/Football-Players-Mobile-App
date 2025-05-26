@@ -20,6 +20,14 @@ export default function Login() {
         body: JSON.stringify({ username, password }),
       });
       const data = await res.json();
+      if (data.twoFactorRequired) {
+        // Store credentials for 2FA page
+        localStorage.setItem("pending2faUserId", data.userId);
+        localStorage.setItem("pending2faUsername", username);
+        localStorage.setItem("pending2faPassword", password);
+        router.push(`/2fa?userId=${data.userId}&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`);
+        return;
+      }
       if (!res.ok) {
         setError(data.error || "Login failed");
       } else {

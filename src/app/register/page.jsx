@@ -8,6 +8,10 @@ export default function Register() {
   const [role, setRole] = useState("user");
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [qrCodeDataURL, setQrCodeDataURL] = useState(null);
+  const [twoFactorSecret, setTwoFactorSecret] = useState(null);
+  const [otpauthUrl, setOtpauthUrl] = useState(null);
+  const [showLoginButton, setShowLoginButton] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e) => {
@@ -25,7 +29,10 @@ export default function Register() {
         setError(data.error || "Registration failed");
       } else {
         setSuccess(true);
-        setTimeout(() => router.push("/login"), 1200);
+        setQrCodeDataURL(data.qrCodeDataURL || null);
+        setTwoFactorSecret(data.twoFactorSecret || null);
+        setOtpauthUrl(data.otpauthUrl || null);
+        setShowLoginButton(true);
       }
     } catch (err) {
       setError("Registration failed");
@@ -48,7 +55,28 @@ export default function Register() {
         <button type="submit" style={{ width: "100%", padding: 10, background: "#0070f3", color: "white", border: "none", borderRadius: 4 }}>Register</button>
       </form>
       {error && <div style={{ color: "red", marginTop: 10 }}>{error}</div>}
-      {success && <div style={{ color: "green", marginTop: 10 }}>Registration successful! Redirecting...</div>}
+      {success && (
+        <div style={{ color: "green", marginTop: 10 }}>
+          Registration successful!<br />
+          <b>Two-Factor Authentication is enabled.</b><br />
+          Please scan the QR code below with your authenticator app (Google Authenticator, Authy, etc.) and save your secret.<br />
+          {qrCodeDataURL && (
+            <div style={{ margin: '16px 0' }}>
+              <img src={qrCodeDataURL} alt="2FA QR Code" style={{ width: 200, height: 200 }} /><br />
+              <small>Secret: <code>{twoFactorSecret}</code></small><br />
+              <a href={otpauthUrl} target="_blank" rel="noopener noreferrer">Open in Authenticator App</a>
+            </div>
+          )}
+          <div style={{ marginTop: 10 }}>
+            After you have scanned the QR code and set up your authenticator app, continue to login.
+          </div>
+          {showLoginButton && (
+            <button onClick={() => router.push('/login')} style={{ marginTop: 16, width: '100%', padding: 10, background: '#0070f3', color: 'white', border: 'none', borderRadius: 4 }}>
+              Continue to Login
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 } 

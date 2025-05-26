@@ -8,7 +8,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  const { username, password } = req.body;
+  const { username, password, twoFactorToken } = req.body;
   if (!username || !password) {
     return res.status(400).json({ error: 'Username and password required' });
   }
@@ -20,6 +20,22 @@ export default async function handler(req, res) {
     const valid = await bcrypt.compare(password, user.passwordHash);
     if (!valid) {
       return res.status(401).json({ error: 'Invalid credentials' });
+    }
+    if (user.isTwoFactorEnabled) {
+      console.log('2FA required for user:', user.username, 'userId:', user.id);
+      if (!twoFactorToken) {
+        return res.status(206).json({ twoFactorRequired: true, userId: user.id });
+      }
+      const speakeasy = await import('speakeasy');
+      const verified = speakeasy.totp.verify({
+        secret: user.twoFactorSecret,
+        encoding: 'base32',
+        token: twoFactorToken,
+        window: 1,
+      });
+      if (!verified) {
+        return res.status(401).json({ error: 'Invalid 2FA token' });
+      }
     }
     const token = jwt.sign(
       { id: user.id, username: user.username, role: user.role }, 

@@ -21,6 +21,15 @@ const User = sequelize.define('User', {
     defaultValue: 'user',
     allowNull: false,
   },
+  twoFactorSecret: {
+    type: DataTypes.STRING,
+    allowNull: true,
+  },
+  isTwoFactorEnabled: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+    allowNull: false,
+  },
 }, {
   timestamps: true,
   freezeTableName: true,
