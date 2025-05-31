@@ -87,7 +87,7 @@ This is a full-stack React Native + Next.js + SQLite application for managing fo
 
 ## 🎨 Design
 
-The initial UI was inspired by this [Figma diagram](https://www.figma.com/design/gFgzgzcHgK07pRY4wt3b97/Football-Players-App?node-id=0-1&t=KsiWAzRSOygmfIyv-0).
+The UI was originally designed by me in [Figma](https://www.figma.com/design/gFgzgzcHgK07pRY4wt3b97/Football-Players-App?node-id=0-1&t=KsiWAzRSOygmfIyv-0) to guide the frontend development.
 
 
 ## 📁 Structure Overview
