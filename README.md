@@ -84,6 +84,12 @@ This is a full-stack React Native + Next.js + SQLite application for managing fo
   - Backend thread generates new entities  
   - WebSockets push updates to UI and charts in real time  
 
+
+## 🎨 Design
+
+The initial UI was inspired by this [Figma diagram](https://www.figma.com/design/gFgzgzcHgK07pRY4wt3b97/Football-Players-App?node-id=0-1&t=KsiWAzRSOygmfIyv-0).
+
+
 ## 📁 Structure Overview
 
 - app/ - Next.js app router pages
