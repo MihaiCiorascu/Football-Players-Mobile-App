@@ -6,13 +6,16 @@ This is a full-stack React Native + Next.js + SQLite application for managing fo
 ## 📦 Tech Stack
 
 - **Frontend**: React, Next.js, CSS Modules
-- **Backend**: Next.js, WebSockets
-- **Database**: SqLite
+- **Backend**: Next.js API Routes, Express.js, WebSockets(Socket.io)
+- **Database**: SqLite (primary), with support for PostgreSQL
 - **State Management**: Context API
+- **Authentication**: NextAuth.js, JWT, bcryptjs
 - **Styling**: CSS Modules
 - **Charts**: Chart.js, React-Chartjs-2
 - **Routing**: next/navigation
 - **Testing**: Jest, NYC (Istanbul)
+- **Real-time Communication**: Socket.io
+- **Security**: Two-factor authentication (speakeasy), QR Code generation
 
 ## 🛠 Frontend Features
 
